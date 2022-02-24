@@ -11,7 +11,7 @@ public class DieCollider : MonoBehaviour
 
 		if(!GodMode.invencible && otherDie)
 		{
-			otherDie.Die();
+			otherDie.Dead();
 		}
 	}
 }

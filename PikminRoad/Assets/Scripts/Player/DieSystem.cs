@@ -7,7 +7,7 @@ public class DieSystem : MonoBehaviour
 {
 	public event Action OnDead = delegate { };
 
-	public void Die()
+	public void Dead()
     {
         OnDead();
         gameObject.SetActive(false);

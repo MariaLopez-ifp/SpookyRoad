@@ -412,7 +412,7 @@ GameObject:
   - component: {fileID: 2543651675969584200}
   - component: {fileID: 1686218479}
   - component: {fileID: 1686218478}
-  - component: {fileID: 1686218482}
+  - component: {fileID: 1165757717496274822}
   m_Layer: 0
   m_Name: Bat_Violet
   m_TagString: Untagged
@@ -493,7 +493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
---- !u!114 &1686218482
+--- !u!114 &1165757717496274822
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -502,7 +502,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000012081666484}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b746591374b1f7849ad6937e0c5a8552, type: 3}
+  m_Script: {fileID: 11500000, guid: 2eddcf908cf8a6445840908e110cf7ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1000012161483196

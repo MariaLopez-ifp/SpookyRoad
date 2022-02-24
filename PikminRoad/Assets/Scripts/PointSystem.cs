@@ -9,7 +9,7 @@ public class PointSystem : MonoBehaviour
 	public struct Points
 	{
 		public Transform point;
-		public bool taken;
+		public Followers followerAssigned;
 	}
 	
 	public Points[] pointsGroup;
@@ -17,13 +17,13 @@ public class PointSystem : MonoBehaviour
 
 	public static event Action<int> datosFollow = delegate { };
 
-	public Transform Enter()
+	public Transform Enter(Followers f)
 	{
 		for(int i = 0; i < pointsGroup.Length; i++)
 		{
-			if (!pointsGroup[i].taken)
+			if (!pointsGroup[i].followerAssigned)
 			{
-				pointsGroup[i].taken = true;
+				pointsGroup[i].followerAssigned = f;
 				numFollowers++;
 				datosFollow(numFollowers);
 				return pointsGroup[i].point;
@@ -32,16 +32,29 @@ public class PointSystem : MonoBehaviour
 		return null;
 	}
 
-	public void Exit(Transform place)
+	public void Exit(Followers f)
 	{
 		for (int i = 0; i < pointsGroup.Length; i++)
 		{
-			if (pointsGroup[i].point == place)
+			if (pointsGroup[i].followerAssigned == f)
             {
-				pointsGroup[i].taken = false;
+				pointsGroup[i].followerAssigned = null;
 				numFollowers--;
 			}
 		}
 		datosFollow(numFollowers);
+	}
+
+	public void RemoveLast()
+    {
+		for (int i = 0; i < pointsGroup.Length; i++)
+		{
+			if (pointsGroup[i].followerAssigned)
+			{
+				pointsGroup[i].followerAssigned.GetComponent<DieSystem>().Dead();
+				pointsGroup[i].followerAssigned = null;
+				return ;
+			}
+		}
 	}
 }

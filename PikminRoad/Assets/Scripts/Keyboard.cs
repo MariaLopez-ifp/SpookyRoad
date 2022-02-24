@@ -11,13 +11,18 @@ public class Keyboard : MonoBehaviour
     public bool esc { get; private set; }
     public bool enter { get; private set; }
     public bool invencible { get; private set; }
+    public bool add { get; private set; }
+    public bool remove { get; private set; }
+    public bool dash { get; private set; }
 
     void Update()
     {
         hor = Input.GetAxisRaw("Horizontal");
-        jump = Input.GetKey("space");
+        dash = Input.GetKey("space");
         esc = Input.GetKeyDown("escape");
         enter = Input.GetKeyDown(KeyCode.Return);
         invencible = Input.GetKeyDown(KeyCode.Alpha1);
+        add = Input.GetKeyDown(KeyCode.Alpha2);
+        remove = Input.GetKeyDown(KeyCode.Alpha3);
     }
 }
