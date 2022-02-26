@@ -4,49 +4,37 @@ using UnityEngine;
 
 public class Dash : MonoBehaviour
 {
-    public float speed = 10;
-    public float dashSpeed = 20;
-    public float dashDuration = 0.2f;
-    public float dashCooldown = 0.5f;
-    public float range = 62;
+	public float cooldown;
+	float actualCooldown = 0;
+	public float range;
+	public GameObject smoke;
+	public AudioSource dashSound;
 
-    float dashTimer;                          
+	Keyboard _input;
 
-    Keyboard _input;
+	void Start()
+	{
+		_input = GetComponent<Keyboard>();
+	}
 
-    void Start()
-    {
-        _input = GetComponent<Keyboard>();
-    }
+	void Update()
+	{
+		if (actualCooldown > 0)
+		{
+			actualCooldown -= Time.deltaTime;
+		}
 
-    void Update()
-    {
-        if(_input.dash && dashTimer <= -dashCooldown) 
-        { 
-            dashTimer = dashDuration;
-            DoDash();
-        }
-        else 
-        { 
-            dashTimer -= Time.deltaTime; 
-        }
-    }
+		if (_input.dash && actualCooldown <= 0)
+		{
+			DoDash();
+			actualCooldown = cooldown;
+		}
+	}
 
-    void DoDash()
-    {
-        Vector3 nextPoint;
-
-        nextPoint = new Vector3(transform.position.x +  (dashTimer > 0 ? Mathf.Sign(_input.hor) * dashSpeed : _input.hor * speed) * Time.deltaTime, transform.position.y, transform.position.z);
-
-        if (nextPoint.x < -range) 
-        { 
-            nextPoint.x = -range; 
-        }
-        else if (nextPoint.x > range) 
-        { 
-            nextPoint.x = range; 
-        }
-
-        transform.position = nextPoint;
-    }
+	void DoDash()
+	{
+		gameObject.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + range);
+		Instantiate(smoke, new Vector3(transform.position.x, transform.position.y + 0.03f, transform.position.z + 0.05f), Quaternion.identity);
+		dashSound.Play();
+	}
 }

@@ -15,7 +15,6 @@ public class Followers : MonoBehaviour
 		if(follower)
 		{
 			transform.localPosition = Vector3.Slerp(transform.localPosition, follower.position, (speed + rand) * Time.deltaTime);
-			//datosFollow(numFollowers);
 		}
 	}
 
@@ -39,18 +38,6 @@ public class Followers : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
-		//if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
-		//{
-		//    rand = UnityEngine.Random.Range(0, 2);
-		//    onFollow = true;
-		//    numFollowers++;
-		//}
-
-		//if(other.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
-		//{
-		//    numFollowers--;
-		//}
-
 		PointSystem tempPoint = other.GetComponent<PointSystem>();
 
 		if (tempPoint)

@@ -14,12 +14,7 @@ public class RotationSystem : MonoBehaviour
         StartCoroutine(Rotation());
     }
 
-    void Update()
-    {
-        //transform.RotateAround(transform.position, Vector3.left, speed * Time.deltaTime);
-    }
-
-    IEnumerator Rotation(/*float duration, Vector3 initialDirection, Vector3 finalDirectiron*/)
+    IEnumerator Rotation()
     {
         for(float actualDuration = 0; actualDuration < durationLoop; actualDuration+=Time.deltaTime)
         {
@@ -27,7 +22,7 @@ public class RotationSystem : MonoBehaviour
 
             yield return new WaitForFixedUpdate();
         }
-
+        
         StartCoroutine(Rotation());
     }
 }

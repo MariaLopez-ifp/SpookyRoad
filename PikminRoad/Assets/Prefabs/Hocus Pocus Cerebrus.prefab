@@ -1079,11 +1079,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a20bebf9300aaf142b3b1e4447fc1a8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  dashSpeed: 20
-  dashDuration: 0.2
-  dashCooldown: 0.5
-  range: 62
+  cooldown: 1.5
+  range: 3
+  smoke: {fileID: 4459973082290882578, guid: be90da8e6b2b93443a9fee508ed7c114, type: 3}
+  dashSound: {fileID: 0}
 --- !u!114 &360187117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1096,6 +1095,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eddcf908cf8a6445840908e110cf7ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  smoke: {fileID: 4862235217510191270, guid: 3ac0a6a3eead90a4c86f32687b6e5b0a, type: 3}
+  dieSound: {fileID: 0}
 --- !u!1 &3912066588129819435
 GameObject:
   m_ObjectHideFlags: 0
